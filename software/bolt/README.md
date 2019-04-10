@@ -5,13 +5,13 @@ v1.27, compiled intel hex files compatible with the MSP430FR5969 MCU
 
 ## Precompiled binaries
 
-There are 6 different configurations:
-BOLT_64b_noreset.hex
-BOLT_64b_reset.hex
-BOLT_128b_noreset.hex
-BOLT_128b_reset.hex
-BOLT_256b_noreset.hex
-BOLT_256b_reset.hex
+There are 6 different configurations:  
+BOLT_64b_noreset.hex  
+BOLT_64b_reset.hex  
+BOLT_128b_noreset.hex  
+BOLT_128b_reset.hex  
+BOLT_256b_noreset.hex  
+BOLT_256b_reset.hex  
 
 The different variants have different queue element sizes and behaviours after a reset.
 64, 128 or 256 bytes are the options for the size of one element in the BOLT queue. Since the amount of FRAM on BOLT is fixed, a larger element size automatically yields a smaller queue size.
