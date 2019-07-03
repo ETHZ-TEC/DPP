@@ -12,14 +12,14 @@
 
     <!-- Target configuration -->
     <targetConf>
-        <obsIds>001 002 003 004 006 007 008 010 011 013 015 016 018 019 020 022 023 024 025 026 027 028 031 032 033</obsIds>
+        <obsIds>001 002 003 004 006 007 008 010 011 013 015 016 017 018 019 020 022 023 024 025 026 027 028 031 032 033</obsIds>
         <voltage>3.3</voltage>
         <embeddedImageId>STM32L433</embeddedImageId>
     </targetConf>
 
     <!-- Serial Service configuration -->
     <serialConf>
-        <obsIds>001 002 003 004 006 007 008 010 011 013 015 016 018 019 020 022 023 024 025 026 027 028 031 032 033</obsIds>
+        <obsIds>001 002 003 004 006 007 008 010 011 013 015 016 017 018 019 020 022 023 024 025 026 027 028 031 032 033</obsIds>
         <port>serial</port>
         <baudrate>115200</baudrate>
         <mode>ascii</mode>
@@ -28,7 +28,7 @@
 
     <!-- GPIO Tracing Service configuration -->
     <gpioTracingConf>
-        <obsIds>001 002 003 004 006 007 008 010 011 013 015 016 018 019 020 022 023 024 025 026 027 028 031 032 033</obsIds>
+        <obsIds>001 002 003 004 006 007 008 010 011 013 015 016 017 018 019 020 022 023 024 025 026 027 028 031 032 033</obsIds>
         <pinConf>
             <pin>INT1</pin>
             <edge>both</edge>
@@ -58,7 +58,7 @@
 
     <!-- GPIO Actuation Service configuration -->
     <!--<gpioActuationConf>
-        <obsIds>001 002 003 004 006 007 008 010 011 013 015 016 018 019 020 022 023 024 025 026 027 028 031 032 033</obsIds>
+        <obsIds>001 002 003 004 006 007 008 010 011 013 015 016 017 018 019 020 022 023 024 025 026 027 028 031 032 033</obsIds>
         <pinConf>
             <pin>SIG1</pin>
             <level>low</level>
