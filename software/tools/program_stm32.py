@@ -23,7 +23,7 @@ import os.path
 import serial
 import serial.tools.list_ports
 from intelhex import hex2bin
-import stm32loader.stm32loader as stm32bl
+import stm32loader as stm32bl
 
 
 verify = False

@@ -116,7 +116,7 @@ if __name__ == "__main__":
   else:
     # prefer the MSP-FET
     serialPort = getMSPFETPort(False)
-      if serialPort is None:
+    if serialPort is None:
       # no MSP-FET found, try to find a DPP DevBoard
       serialPort = getDPPDevBoardPort(False)
       if serialPort is None:
