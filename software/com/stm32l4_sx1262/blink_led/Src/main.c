@@ -62,7 +62,7 @@ int main(void)
 
     uart_println("hello world!");
 
-    delay(SystemCoreClock / 30);
+    delay(SystemCoreClock / 10);
   }
 }
 
