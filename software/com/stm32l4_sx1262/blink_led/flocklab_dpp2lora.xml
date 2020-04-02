@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testConf xmlns="http://www.flocklab.ethz.ch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.flocklab.ethz.ch xml/flocklab.xsd">
+    <!-- General configuration -->
+    <generalConf>
+        <name>Hello World</name>
+        <description>
+            A hello world app for the DPP2 LoRa platform.
+        </description>
+        <scheduleAsap>
+            <durationSecs>120</durationSecs>
+        </scheduleAsap>
+        <emailResults>no</emailResults>
+    </generalConf>
+
+    <!-- Target configuration -->
+    <targetConf>
+        <obsIds>10</obsIds>
+        <voltage>3.3</voltage>
+        <embeddedImageId>Image_1</embeddedImageId>
+    </targetConf>
+
+    <!-- Serial Service configuration -->
+    <serialConf>
+        <obsIds>10</obsIds>
+        <baudrate>115200</baudrate>
+    </serialConf>
+
+    <!-- GPIO Tracing Service configuration -->
+    <gpioTracingConf>
+        <obsIds>10</obsIds>
+        <pins>LED1 INT1</pins>
+    </gpioTracingConf>
+
+    <!-- GPIO Actuation Service configuration -->
+    <!-- NOT YET AVAILABLE! -->
+
+    <!-- Power Profiling Service configuration -->
+    <powerProfilingConf>
+        <obsIds>10</obsIds>
+        <offset>10</offset>
+        <duration>10</duration>
+    </powerProfilingConf>
+
+    <embeddedImageConf>
+        <embeddedImageId>Image_1</embeddedImageId>
+        <name>Hello world</name>
+        <description>Hello world application for the DPP2 LoRa platform</description>
+        <platform>dpp2lora</platform>
+        <data>
+        </data>
+    </embeddedImageConf>
+</testConf>
