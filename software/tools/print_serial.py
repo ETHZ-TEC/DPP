@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 '''
 
-Print the serial output of the CC430 MCU.
-
-last update: 2018-09-24
-author:      rdaforno
+Print the DPP serial output.
 
 '''
 
@@ -45,7 +42,7 @@ def serial_read(serialPort):
   try:
     ser = serial.Serial(port=serialPort, baudrate=baudRate, timeout=None)
     if ser.isOpen():
-      print "connected to " + ser.portstr + " (" + str(ser.baudrate) + ")"
+      print("connected to " + ser.portstr + " (" + str(ser.baudrate) + ")")
       ser.setRTS(True)          # pull TEST / BSL entry line
       ser.setDTR(False)         # release reset line
       ser.flushInput()          # flush input and output buffers
@@ -53,20 +50,17 @@ def serial_read(serialPort):
       while True:
         if ser.inWaiting() > 0:
           line = ser.read(ser.inWaiting())
-          sys.stdout.write(line)
+          sys.stdout.write(line.decode('utf8'))
           sys.stdout.flush()
         time.sleep(0.01) 
   except SerialException:
-      print "device %s unavailable" % serialPort
+      print("device %s unavailable" % serialPort)
   except ValueError:
-      print "invalid arguments"
+      print("invalid arguments")
   except OSError:
-      print "device %s not found" % serialPort
+      print("device %s not found" % serialPort)
   except KeyboardInterrupt:
-      print "aborted"
-  except:
-      type, value, tb = sys.exc_info()
-      print "error: %s (%s)" % (value.message, type)
+      print("aborted")
   if ser.isOpen():
     ser.close()
 
@@ -76,10 +70,18 @@ if __name__ == "__main__":
     # 1st argument is supposed to be the serial port
     serialPort = sys.argv[1]
   else:
-      serialPort = getFirstPort(False)
-      if serialPort is None:
-        print("no DPP2 DevBoard found")
-        sys.exit()
+    serialPort = getFirstPort(False)
+    if serialPort is None:
+      print("no DPP2 DevBoard found")
+      sys.exit(1)
+  if len(sys.argv) > 2:
+    try:
+      baudRate = int(sys.argv[2])
+    except:
+      print("invalid baudrate %s" % sys.argv[2])
+      sys.exit(1)
+
   if not checkSerialPort(serialPort):
-    sys.exit()
+    sys.exit(1)
+
   serial_read(serialPort)
