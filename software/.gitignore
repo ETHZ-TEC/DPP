@@ -1,0 +1,9 @@
+**/Debug/**
+*.dis
+*.html
+*.bin
+*.obj
+**/.settings/**
+.launches
+.cache
+

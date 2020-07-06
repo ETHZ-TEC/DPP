@@ -6,9 +6,9 @@
         <description>
             A hello world app for the DPP2 LoRa platform.
         </description>
-        <scheduleAsap>
-            <durationSecs>120</durationSecs>
-        </scheduleAsap>
+        <schedule>
+            <duration>120</duration>
+        </schedule>
         <emailResults>no</emailResults>
     </generalConf>
 
@@ -30,9 +30,6 @@
         <obsIds>10</obsIds>
         <pins>LED1 INT1</pins>
     </gpioTracingConf>
-
-    <!-- GPIO Actuation Service configuration -->
-    <!-- NOT YET AVAILABLE! -->
 
     <!-- Power Profiling Service configuration -->
     <powerProfilingConf>
