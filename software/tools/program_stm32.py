@@ -63,18 +63,46 @@ def programSTM32(fileName, serialPort):
   loader.reset()
 
 
+def convertFile(fileName):
+  f, ext = os.path.splitext(fileName)
+  if ext.lower() in ('.elf', '.exe', '.out'):
+    # 3rd argument (if provided) is the node ID -> can only be embedded into elf file
+    if len(sys.argv) > 3:
+      try:
+        nodeID = int(sys.argv[3])
+        # use tos-set-symbols to set the node ID and convert to Intel hex
+        if os.system("tos-set-symbols --objcopy objcopy --objdump objdump --target ihex %s %s.hex FLOCKLAB_NODE_ID=%d" % (fileName, fileName, nodeID)) != 0:
+          print("failed to set node ID (tos-set-symbols missing?)")
+        else:
+          print("node ID set to %d" % nodeID)
+      except:
+        print("invalid node ID %s" % sys.argv[3])
+        sys.exit(1)
+    else:
+      # convert to Intel hex
+      os.system("objcopy -O ihex %s %s.hex" % (fileName, fileName))
+      print("file converted to Intel hex format")
+    fileName = fileName + ".hex"
+    ext = ".hex"
+  if ext.lower() in ('.hex', '.ihex'):
+    hex2bin(fileName, fileName + ".binary")
+    fileName = fileName + ".binary"
+    print("file converted to binary format")
+  return fileName
+
+
 if __name__ == "__main__":
+
   if len(sys.argv) < 2:
     print("no filename provided\r\nusage:  ./" + os.path.basename(__file__) + " [filename] [port (optional)]")
-    sys.exit()
+    sys.exit(1)
+
   fileName = sys.argv[1]
   if not os.path.isfile(fileName):
     print("file '%s' not found" % fileName)
-    sys.exit()
-  f, ext = os.path.splitext(fileName)
-  if "hex" in ext:
-    hex2bin(fileName, fileName + ".binary")
-    fileName = fileName + ".binary"
+    sys.exit(1)
+
+  fileName = convertFile(fileName)
 
   if len(sys.argv) > 2:
     # 2nd argument is supposed to be the serial port
@@ -83,7 +111,8 @@ if __name__ == "__main__":
       serialPort = getFirstPort(False)
       if serialPort is None:
         print("no DPP2 DevBoard found")
-        sys.exit()
+        sys.exit(1)
+
   print("connecting to serial port %s" % serialPort)
   programSTM32(fileName, serialPort)
 
